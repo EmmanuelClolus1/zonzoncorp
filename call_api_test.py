@@ -72,6 +72,7 @@ except requests.exceptions.RequestException as e:
     exit()
 
 # ETAPE 3 --- Insertion du JSON dans BigQuery
+
 # Peut necessiter la création vide de la table dans BQ
 # Et va surement necessiter une connexion au projet/dataset  
 
