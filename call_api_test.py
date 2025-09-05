@@ -4,12 +4,17 @@ import json
 from utils import *
 import pandas as pd
 import pandas_gbq
+import os 
+from dotenv import load_dotenv
+
+# Chargement des variables en .env
+load_dotenv()
 
 ### ETAPE 1 --- Paramétrage & Query pour API Grid 
 
 # Parametres API Grid GraphQL
 graphql_url = "https://api-op.grid.gg/central-data/graphql"
-api_key = "3xe9JnJfuipUGJuno4q9q2rSZkkVlR9pYLnRSyxe"
+api_key = os.getenv("API_KEY")
 
 # Headers - Dict
 headers = {
@@ -90,7 +95,7 @@ table_id_bq = "counter-s2.bronze_team.team"
 pandas_gbq.to_gbq(
     df_organisations, 
     table_id_bq, 
-    if_exists='append',
+    if_exists='replace',
     project_id="counter-s2"
 )
 
